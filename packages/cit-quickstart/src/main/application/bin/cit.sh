@@ -53,7 +53,7 @@ fi
 # we make an exception for the uninstall command, which may require root access to delete users and certain directories
 if [ -n "$CIT_USERNAME" ] && [ "$CIT_USERNAME" != "root" ] && [ $(whoami) == "root" ] && [ -z "$CIT_SUDO" ] && [ "$1" != "uninstall" ]; then
   export CIT_SUDO=true
-  sudo -u $CIT_USERNAME -H -E cit $*
+  sudo -u $CIT_USERNAME -H -E $CIT_BIN/cit.sh $*
   exit $?
 fi
 
